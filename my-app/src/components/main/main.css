@@ -1,0 +1,14 @@
+body{
+    background-color: #334;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh-;
+}
+main>img{
+    width: auto;
+    height: auto;
+}
