@@ -1,0 +1,21 @@
+ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin-right: 20px;
+
+}
+ul>li{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: crimson;
+}
