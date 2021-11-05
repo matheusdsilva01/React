@@ -3,20 +3,40 @@ import ClassComponent from '../components/ClassComponent';
 import FunctionComponent from '../components/FunctionComponent';
 
 function App() {
-  return (
+  const convidados = [
+    {
+      nome: 'Nicolas',
+      estaNaLista: true,
+      tarefa: 'batata-frita'
+    },
+    {
+      nome: 'Pedro',
+      estaNaLista: false,
+      tarefa: 'pizza'
+    },
+    {
+      nome: 'Carolina',
+      estaNaLista: true,
+      tarefa: 'bebidas'
+    },
+    {
+      nome: 'Silva',
+      estaNaLista: true,
+      tarefa: 'Refrigerante'
+    }];
 
+  return (
     <div className="App">
       <h3>Convidado:</h3>
-      <ClassComponent nome="Nicolas" estaNaLista={true} />
-      <ClassComponent nome="Pedro" estaNaLista={false} />
-      <ClassComponent nome="Carolina" estaNaLista={true} />
-      <ClassComponent nome="Matheus" estaNaLista={true} />
-
-      <h3>Tarefas: </h3>
-      <FunctionComponent nome="Nicolas" tarefa="batata-frita" />
-      <FunctionComponent nome="Pedro" tarefa="pizza" />
-      <FunctionComponent nome="Carolina" tarefa="bebidas" />
-      <FunctionComponent nome="Silva" tarefa="refrigerante" />
+      {convidados.map((convidado, i) => (
+        <ClassComponent key={i} nome={convidado.nome} estaNaLista={convidado.estaNaLista} />
+      )
+      )}
+      <h3>Tarefas:</h3>
+      {convidados.map((convidado, i) => (
+        <FunctionComponent key={i} nome={convidado.nome} tarefa={convidado.tarefa} />
+      )
+      )}
     </div>
   );
 }
