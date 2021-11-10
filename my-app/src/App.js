@@ -1,14 +1,9 @@
-// import Header from './components/header/header';
-import Main from './components/main/main';
-// import Footer from './components/footer/footer';
-
-// import './App.css';
+import Main from './components/banner/countwrapper'
+import './App.css';
 function App() {
   return (
     <div className="App">
-        {/* <Header /> */}
-        <Main />
-        {/* <Footer /> */}
+      <Main />
     </div>
   );
 }
