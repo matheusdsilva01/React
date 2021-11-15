@@ -1,14 +1,10 @@
-// import Counter from './components/countador/counterClass'
-// import Map from './components/map/map'
-import Mesa from './components/mesa/mesa'
+import Forms from './components/forms/forms'
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Mesa />
-      {/* <Counter /> */}
-      {/* <Map /> */}
+      <Forms />
     </div>
   );
 }
