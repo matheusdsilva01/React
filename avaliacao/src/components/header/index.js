@@ -1,6 +1,6 @@
 import React from 'react'
 import './header.scss'
-import Logo from '../../Component 1 (3).svg'
+import Logo from '../../logo.svg'
 
 export default function index() {
     return (
@@ -20,7 +20,7 @@ export default function index() {
                             <a class="nav-link" href="#projects">Meus projetos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contatos</a>
+                            <a class="nav-link" href="#footer">Contatos</a>
                         </li>
                     </ul>
                 </div>

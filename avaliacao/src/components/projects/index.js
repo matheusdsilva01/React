@@ -36,7 +36,7 @@ export default function index() {
                             return (
                                 <div class="col mb-5">
                                     <a href={item.link} target="_blank">
-                                        <img src={item.imagem} alt="" />
+                                        <img className="rounded" src={item.imagem} alt="" />
                                     </a>
                                     <section class="d-flex justify-content-center">
                                         <h4>{item.name}</h4>
