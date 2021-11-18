@@ -1,12 +1,11 @@
-import Forms from './components/forms/forms'
+import { Component } from 'react';
 import './App.css';
+import CaminhoDasPedras from './rotas'
 
-function App() {
-  return (
-    <div className="App">
-      <Forms />
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <CaminhoDasPedras />
+    );
+  }
 }
-
-export default App;
