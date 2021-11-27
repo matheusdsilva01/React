@@ -5,7 +5,9 @@ const Index = () => {
     const navigate = useNavigate();
     useEffect(()=>{
         const x = setInterval(() => {
-            setState(count-1)
+            if(count > 0){
+                setState(count-1)
+            }
         }, 1000);
         if(count <=0){
             clearInterval(x)
@@ -13,6 +15,7 @@ const Index = () => {
         setTimeout(() => {
             navigate('/');
         }, 5000);
+        // eslint-disable-next-line
     }, [count])
     return (
         <div>
