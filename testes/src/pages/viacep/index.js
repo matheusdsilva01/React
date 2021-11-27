@@ -1,61 +1,58 @@
-import { Component } from 'react';
+import { useState, useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router';
 import Swal from 'sweetalert2';
 import api from '../../services/viaCep';
-import Cep from './components/cep';
 
-export default class Main extends Component {
-  constructor() {
-    super();
-    this.state = {
-      endereco: [],
-    }
-  }
+const Index = () => {
+  const [endereco, setEndereco] = useState()
+  const { cep } = useParams()
 
-  handleSubmit = async ({ cep }) => {
+  useEffect(() => {
+    if (cep != null)
+      handleSubmit(cep)
+  }, [cep])
+
+  async function handleSubmit({cep}){
     if (cep !== '') {
       try {
         const response = await api.get(`/ws/${cep}/json`);
-        var newEndereco = this.state.endereco;
-        newEndereco.push(response.data);
-        this.setState({ endereco: newEndereco });
+        setEndereco(response.data);
       } catch (error) {
         Swal.fire({
-          title: error.response.status,
+          title: "deu ruim",
           icon: 'error',
-          text: error.response.data.message
+          text: "amigao"
         });
       }
     }
   }
 
-  render() {
-    return (
-      <>
-        <div className="col-md-4 col-sm-6 my-3 container text-center">
-          <Link to={`/brasilcep`}>Ir para Brasil cep</Link>
-          <br />
-          <Link to={`/`}>Ir para a Principal</Link>
-          <br/>
-          <h2>Buscar endereço na Via Cep</h2>
-          <Formik initialValues={{ cep: '' }} onSubmit={this.handleSubmit}>
-            <Form>
-              <Field placeholder="Insira o cep" required type="text" name="cep" id="cep" className="form-control" />
-              <button type="submit" className="btn btn-primary my-4">Pesquisar</button>
-            </Form>
-          </Formik>
-          {this.state.endereco && (
 
-            this.state.endereco.map(({ cep, logradouro, localidade}) => {
-              return (
-                <Cep key={cep} cep={cep} logradouro={logradouro} localidade={localidade}/>
-              )
-            })
-
-          )}
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <div className="col-md-4 col-sm-6 my-3 container text-center">
+        <Link to={`/brasilcep`}>Ir para Brasil cep</Link>
+        <br />
+        <Link to={`/`}>Ir para a Principal</Link>
+        <br />
+        <h2>Buscar endereço na Via Cep</h2>
+        <Formik initialValues={{ cep: '' }} onSubmit={handleSubmit}>
+          <Form>
+            <Field placeholder="Insira o cep" required type="text" name="cep" id="cep" className="form-control" />
+            <button type="submit" className="btn btn-primary my-4">Pesquisar</button>
+          </Form>
+        </Formik>
+        {endereco && (
+          <>
+            <li>cep: {endereco.cep}</li>
+            <li>logradouro: {endereco.logradouro}</li>
+            <li>localidade: {endereco.localidade}</li>
+          </>
+        )}
+      </div>
+    </>
+  );
 }
+export default Index;
